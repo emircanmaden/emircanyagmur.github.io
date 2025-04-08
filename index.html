@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title> Emircan ♥ Yağmur </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="girisEkrani">
+  <h2>💌 Sadece bizim için 💌</h2>
+  <p>Sevgili olduğumuz tarihi yaz 😊 (GGAAYYYY)</p>
+  <input type="password" id="sifre" >
+  <button onclick="girisYap()">Giriş</button>
+  <div class="hata" id="hataMesaji"></div>
+</div>
+
+<div id="anaIcerik">
+  <!-- Hoş geldiniz mesajı -->
+   <h1>Hoşgeldin Aşkım</h1>
+  <section class="guzelSoz">
+    <p class="guzelSozYazisi">Bu siteyi senin için özel olarak yaptım. 💖</p>
+  </section>
+
+  <!-- Galeri -->
+  <section class="galeri" id="galeriSection">
+    <div class="sectionTitle">Anılarımız</div>
+    <div class="galeriContainer">
+      <div class="item"><img src="images/gallery/1.jpg" alt="Anı 1"></div>
+      <div class="item"><img src="images/gallery/2.jpg" alt="Anı 2"></div>
+      <div class="item"><img src="images/gallery/3.jpg" alt="Anı 3"></div>
+      <div class="item"><img src="images/gallery/4.jpg" alt="Anı 4"></div>
+      <div class="item"><img src="images/gallery/5.jpg" alt="Anı 5"></div>
+      <div class="item"><img src="images/gallery/6.jpg" alt="Anı 6"></div>
+      <div class="item"><img src="images/gallery/7.jpg" alt="Anı 7"></div>
+    </div>
+  </section>
+
+  <!-- Hikayemiz -->
+  <section class="hikayemiz">
+    <h2>Seni Çoooook Seviyorum ♥</h2>
+    <p>Seni dünyalar kadar çok seviyorum ve kimseye değiştirmem seni aşkım.</p>
+  </section>
+
+  <!-- Şarkı -->
+  <div class="resim">
+    <div class="sarkiBox">
+      <div class="kalpBar">
+        <div class="kalpSimge"></div>
+        <div class="müzikSimge"></div>
+      </div>
+      <img src="images/gallery/7.jpg" alt="Anı 7" class="sarkiResim">
+      <div class="sarkiMetin">
+        <h3 class="sarkiBaslik">Dilerim Ki 💖</h3>
+        <p class="sarkiAltBaslik">Bu Şarkı Senin İçin</p>
+        <p class="sarkiAltBaslik">En özel şarkımız</p>
+
+  
+        <!-- Müzik oynatıcı -->
+        <div class="musicPlayer">
+          <div class="progressBar">
+            <div class="progress" id="progress">
+              <div class="kalpSimge"></div> <!-- Kalp simgesi burada olacak -->
+            </div>
+          </div>
+          <button class="playPauseBtn" id="playPauseBtn">💖</button>
+          <audio id="audio" src="mp3.mp3"></audio>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <section class="mesaj">
+    <div class="kalpBar">
+        <div class="kalpSimge"></div>
+        <div class="müzikSimge"></div>
+      </div>
+    <p>Seni kırdığım için özür dilerim birtanem.</p>
+  </section>
+
+  <p>Her zaman seninle olmaktan mutluyum, iyi ki varsın! 💌</p>
+
+ 
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <img src="" alt="Büyütülmüş Görsel">
+  </div>
+
+</div>
+
+<script>
+  function girisYap() {
+    const dogruSifre = "20122024"; // Burayı sevgili olduğunuz tarih ile değiştir
+    const girilen = document.getElementById("sifre").value;
+    if (girilen === dogruSifre) {
+      document.getElementById("girisEkrani").style.display = "none";
+      document.getElementById("anaIcerik").style.display = "block";
+    } else {
+      document.getElementById("hataMesaji").textContent = "Yanlış tarih, tekrar dene canım ♥";
+    }
+  }
+
+  setInterval(() => {
+    const kar = document.createElement("div");
+    kar.classList.add("kar");
+    kar.style.left = Math.random() * window.innerWidth + "px";
+    kar.style.width = kar.style.height = Math.random() * 5 + 2 + "px";
+    kar.style.animationDuration = Math.random() * 5 + 5 + "s";
+    document.body.appendChild(kar);
+
+    setTimeout(() => {
+      kar.remove();
+    }, 10000);
+  }, 200);
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = lightbox.querySelector("img");
+
+  document.querySelectorAll(".galeriContainer img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
+
+// Müzik oynatıcı kontrolü
+const audio = document.getElementById('audio');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const progress = document.getElementById('progress');
+
+let isPlaying = false;
+
+playPauseBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    audio.pause();
+    playPauseBtn.textContent = '▶️'; // Oynatma butonunu göster
+  } else {
+    audio.play();
+    playPauseBtn.textContent = '⏸️'; // Durdurma butonunu göster
+  }
+  isPlaying = !isPlaying;
+});
+
+// Müzik ilerleme çubuğu
+audio.addEventListener('timeupdate', () => {
+  const progressPercentage = (audio.currentTime / audio.duration) * 100;
+  progress.style.width = progressPercentage + '%';
+});
+
+
+</script>
+
+</body>
+</html>

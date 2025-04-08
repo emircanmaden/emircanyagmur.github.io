@@ -1,0 +1,312 @@
+/* Genel Ayarlar */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff0f5;
+  }
+  
+  /* Giriş Ekranı */
+  #girisEkrani {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #ffe4ec;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  #girisEkrani h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #c2185b;
+  }
+  
+  #girisEkrani p {
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #880e4f;
+  }
+  
+  #girisEkrani input[type="password"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  #girisEkrani button {
+    padding: 10px 20px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  #girisEkrani button:hover {
+    background-color: #f06292;
+  }
+  
+  .hata {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  /* Ana İçerik */
+  #anaIcerik {
+    display: none;
+    padding: 30px 20px;
+    text-align: center;
+    background: linear-gradient(#fff0f5, #ffffff);
+  }
+  
+  #anaIcerik h1 {
+    font-size: 28px;
+    color: #d81b60;
+    margin-bottom: 30px;
+  }
+  
+  /* Galeri */
+  .galeri .sectionTitle {
+    font-size: 24px;
+    color: #c2185b;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .galeri .galeriContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .galeri .galeriContainer .item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 200px; /* Sabit yükseklik */
+  }
+  
+  .galeri .galeriContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmin kutuya tam oturması için */
+    transition: 0.4s;
+    border-radius: 10px;
+  }
+  
+  .galeri .galeriContainer .item:hover img {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive - Tablet ve üstü */
+  @media (min-width: 600px) {
+    .galeri .galeriContainer {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .galeri .galeriContainer {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .galeri .galeriContainer {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  /* Kar animasyonu */
+  @keyframes kalpYukari {
+    0% {
+      transform: translateY(0) rotate(45deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-100vh) rotate(45deg);
+      opacity: 0;
+    }
+  }
+  
+  .kar {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: karYagisi 10s linear infinite;
+    z-index: 998;
+  }
+  
+  @keyframes karYagisi {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      transform: translateY(100vh) translateX(20px);
+    }
+  }
+  
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px white;
+  }
+  
+  
+
+  /* Resim Elemanları */
+.resim {
+  position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.sarkiBox {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin: auto;
+  overflow: hidden;
+}
+
+.sarkiResim {
+  width: 70%; /* Resmi biraz küçülttüm */
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Şarkı için Yazılar */
+.sarkiMetin {
+  text-align: center;
+  color: #333;
+}
+
+.sarkiBaslik {
+  font-size: 24px;
+  color: #d81b60;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sarkiAltBaslik {
+  font-size: 16px;
+  color: #880e4f;
+  margin-bottom: 15px;
+}
+
+/* Kalpli Müzik Barı */
+.kalpBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ff80ab;
+  padding: 10px;
+  border-radius: 15px 15px 0 0;
+  margin-bottom: 15px;
+}
+
+.kalpSimge, .müzikSimge {
+  font-size: 20px;
+  color: white;
+}
+
+/* Müzik Oynatıcı */
+.musicPlayer {
+  margin-top: 10px;
+}
+
+.progressBar {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 5px;
+  height: 10px;
+  margin: 10px 0;
+  position: relative;
+}
+
+.progress {
+  width: 0;
+  height: 100%;
+  background-color: red;
+  border-radius: 5px;
+}
+
+.playPauseBtn {
+  background-color: #df91ab;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.playPauseBtn:hover {
+  background-color: #e91e63;
+}
+
+/* Responsive Ayarlar */
+@media (max-width: 600px) {
+  .sarkiBox {
+    padding: 10px;
+    max-width: 100%;
+  }
+  .sarkiResim {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .kalpBar {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .kalpSimge, .müzikSimge {
+    font-size: 30px;
+  }
+  .sarkiBaslik {
+    font-size: 22px;
+  }
+  .sarkiAltBaslik {
+    font-size: 14px;
+  }
+}
